@@ -385,7 +385,9 @@
       <div class="card">
         <div class="title">微信二维码</div>
         <div style="margin-top:10px; display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
-          <img src="assets/wechat.jpg" alt="WeChat QR" class="qrimg" />
+          <img src="assets/wechat.jpg" alt="WeChat QR" class="qrimg qr-click" title="点击放大"
+     style="cursor:zoom-in;" />
+
       
         </div>
       </div>
@@ -395,6 +397,20 @@
   <div class="footer">
     © <span id="y"></span> 王滋涵 · Portfolio ｜
   </div>
+</div>
+<!-- WeChat QR Preview -->
+<div id="qrModal" style="
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.75);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+  cursor:zoom-out;
+">
+  <img id="qrModalImg" src="" alt="WeChat QR Large"
+       style="max-width:90%; max-height:90%; border-radius:16px; box-shadow:0 20px 60px rgba(0,0,0,.6);" />
 </div>
 
 <script>
@@ -412,6 +428,22 @@
     });
   }
   buttons.forEach(b => b.addEventListener('click', () => setFilter(b.dataset.filter)));
+  // WeChat QR click to zoom
+const qr = document.querySelector('.qr-click');
+const modal = document.getElementById('qrModal');
+const modalImg = document.getElementById('qrModalImg');
+
+if(qr){
+  qr.addEventListener('click', () => {
+    modalImg.src = qr.src;
+    modal.style.display = 'flex';
+  });
+}
+
+modal.addEventListener('click', () => {
+  modal.style.display = 'none';
+});
+
 </script>
 </body>
 </html>
