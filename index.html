@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>王滋涵 | 图形渲染 / 引擎 / XR 作品集</title>
+  <meta name="description" content="王滋涵（RIT CS 硕士）｜图形渲染 / 引擎开发 / XR｜UE5 BRDF、OpenGL 引擎、VR 项目" />
+  <style>
+    :root{
+      --bg:#0b0d12; --card:#121623; --text:#e9ecf1; --muted:#aab2c5;
+      --line:#242b3d; --accent:#7aa2ff; --accent2:#7dffcf;
+      --chip:#1a2236;
+    }
+    *{box-sizing:border-box}
+    body{margin:0; font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;
+      background:linear-gradient(180deg,#0b0d12 0%, #0b0d12 40%, #0a1324 100%);
+      color:var(--text);
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:1040px; margin:0 auto; padding:28px 18px 60px}
+    .topbar{display:flex; justify-content:space-between; align-items:center; gap:12px}
+    .brand{display:flex; align-items:center; gap:10px}
+    .dot{width:10px;height:10px;border-radius:50%; background:var(--accent2); box-shadow:0 0 18px rgba(125,255,207,.45)}
+    .nav{display:flex; gap:14px; flex-wrap:wrap; font-size:14px; color:var(--muted)}
+    .nav a{padding:8px 10px; border:1px solid transparent; border-radius:10px}
+    .nav a:hover{border-color:var(--line); background:rgba(255,255,255,.03)}
+    .hero{margin-top:22px; padding:22px; border:1px solid var(--line); border-radius:18px; background:rgba(18,22,35,.72); backdrop-filter: blur(10px)}
+    .hero h1{margin:0; font-size:30px; letter-spacing:.3px}
+    .subtitle{margin-top:8px; color:var(--muted); line-height:1.6}
+    .badges{margin-top:14px; display:flex; gap:10px; flex-wrap:wrap}
+    .badge{font-size:12px; color:#dbe3ff; background:rgba(122,162,255,.12); border:1px solid rgba(122,162,255,.25);
+      padding:6px 10px; border-radius:999px}
+    .cta{margin-top:16px; display:flex; gap:10px; flex-wrap:wrap}
+    .btn{display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding:10px 12px; border-radius:12px; border:1px solid var(--line); background:rgba(255,255,255,.03);
+      font-size:14px; color:var(--text)}
+    .btn.primary{border-color:rgba(122,162,255,.5); background:rgba(122,162,255,.16)}
+    .btn:hover{transform:translateY(-1px)}
+    .grid{display:grid; grid-template-columns:1fr; gap:14px}
+    @media(min-width:860px){ .grid{grid-template-columns:1fr 1fr} }
+    section{margin-top:26px}
+    h2{margin:0 0 12px; font-size:18px}
+    .card{border:1px solid var(--line); background:rgba(18,22,35,.62); border-radius:16px; padding:16px}
+    .cardhead{display:flex; justify-content:space-between; align-items:flex-start; gap:12px}
+    .title{font-weight:700}
+    .meta{color:var(--muted); font-size:12px; margin-top:4px}
+    .chips{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px}
+    .chip{font-size:12px; color:#cdd6ef; background:var(--chip); border:1px solid rgba(255,255,255,.06);
+      padding:5px 9px; border-radius:999px}
+    ul{margin:10px 0 0; padding-left:18px; color:var(--text)}
+    li{margin:6px 0; color:var(--text)}
+    .links{margin-top:12px; display:flex; gap:10px; flex-wrap:wrap}
+    .small{font-size:12px; color:var(--muted)}
+    .filters{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px}
+    .fbtn{cursor:pointer; user-select:none; font-size:12px; color:var(--muted);
+      border:1px solid var(--line); background:rgba(255,255,255,.02); padding:6px 10px; border-radius:999px}
+    .fbtn.active{color:var(--text); border-color:rgba(122,162,255,.5); background:rgba(122,162,255,.12)}
+    .footer{margin-top:30px; padding-top:18px; border-top:1px solid var(--line); color:var(--muted); font-size:12px}
+    .two{display:grid; grid-template-columns:1fr; gap:14px}
+    @media(min-width:860px){ .two{grid-template-columns:1.2fr .8fr} }
+    .qr{width:140px;height:140px;border-radius:14px;border:1px solid var(--line); background:#0b0d12;
+      display:flex;align-items:center;justify-content:center;color:var(--muted); font-size:12px}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <div class="brand">
+      <div class="dot"></div>
+      <div>
+        <div style="font-weight:700">王子涵 · Portfolio</div>
+        <div class="small">图形渲染 / 引擎开发 / XR</div>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="#projects">项目</a>
+      <a href="#experience">经历</a>
+      <a href="#skills">技能</a>
+      <a href="#contact">联系</a>
+    </nav>
+  </div>
+
+  <div class="hero">
+    <h1>王滋涵（Zihan Wang）</h1>
+    <div class="subtitle">
+      RIT 计算机科学硕士在读｜网易 VR、阿里 Unity、MAGIC（Unreal VR）经历。<br/>
+      方向：实时渲染、图形引擎、UE5/ OpenGL、XR 交互与性能优化。
+    </div>
+    <div class="badges">
+      <span class="badge">C++ / UE5 / HLSL</span>
+      <span class="badge">OpenGL / Vulkan</span>
+      <span class="badge">XR：Meta / OpenXR</span>
+      <span class="badge">PyTorch / 3DGS</span>
+    </div>
+    <div class="cta">
+      <a class="btn primary" href="assets/resume.pdf" target="_blank" rel="noopener">下载简历 PDF</a>
+      <a class="btn" href="https://github.com/THANKSHANK" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="mailto:zihanwang7@outlook.com">邮箱联系</a>
+    </div>
+  </div>
+
+  <section id="projects">
+    <h2>代表项目</h2>
+    <div class="filters">
+      <div class="fbtn active" data-filter="all">全部</div>
+      <div class="fbtn" data-filter="graphics">图形渲染</div>
+      <div class="fbtn" data-filter="engine">引擎</div>
+      <div class="fbtn" data-filter="xr">XR/VR</div>
+      <div class="fbtn" data-filter="ai">AI/视觉</div>
+    </div>
+
+    <div class="grid">
+      <!-- Project 1 -->
+      <div class="card project" data-tags="graphics,engine">
+        <div class="cardhead">
+          <div>
+            <div class="title">UE5 BRDF 渲染实现（Kulla–Conty 多次散射）</div>
+            <div class="meta">角色：图形渲染开发 / 核心实现者｜2025.01–2025.05</div>
+          </div>
+        </div>
+        <div class="chips">
+          <span class="chip">C++</span><span class="chip">HLSL</span><span class="chip">Unreal Engine 5</span><span class="chip">PBR</span>
+        </div>
+        <ul>
+          <li>落地多次散射模型，解决高粗糙材质能量损失与高光发灰问题。</li>
+          <li>实现蒙特卡洛 GGX 积分生成 LUT，并在 UE5 中自定义 HLSL 节点接管高光计算。</li>
+        </ul>
+       <div class="links">
+        <a class="btn" href="https://github.com/THANKSHANK/KullaContyBRDF" target="_blank" rel="noopener">代码/仓库</a>
+        <a class="btn" href="https://github.com/THANKSHANK/KullaContyBRDF#readme" target="_blank" rel="noopener">技术笔记(README)</a>
+        <a class="btn" href="https://github.com/THANKSHANK/KullaContyBRDF/issues" target="_blank" rel="noopener">Issues/计划</a>
+       </div>
+
+      </div>
+
+      <!-- Project 2 -->
+      <div class="card project" data-tags="engine,graphics">
+        <div class="cardhead">
+          <div>
+            <div class="title">自研 OpenGL 图形渲染引擎</div>
+            <div class="meta">角色：引擎开发者 / 架构设计｜2024.01–2024.08</div>
+          </div>
+        </div>
+        <div class="chips">
+          <span class="chip">C++</span><span class="chip">OpenGL</span><span class="chip">PBR</span><span class="chip">HDR</span>
+        </div>
+        <ul>
+          <li>从零构建模块化引擎架构，实现渲染管线：PBR / 阴影 / HDR / 后处理。</li>
+          <li>扩展光线追踪与超采样模块，用于实时与离线渲染对比与验证。</li>
+        </ul>
+        <div class="links">
+        <a class="btn" href="https://github.com/THANKSHANK/cglEngine" target="_blank" rel="noopener">代码/仓库</a>
+        <a class="btn" href="https://github.com/THANKSHANK/cglEngine#readme" target="_blank" rel="noopener">技术笔记(README)</a>
+        <a class="btn" href="https://github.com/THANKSHANK/cglEngine/issues" target="_blank" rel="noopener">Issues/计划</a>
+        </div>
+
+      </div>
+
+      <!-- Project 3 -->
+      <div class="card project" data-tags="xr">
+        <div class="cardhead">
+          <div>
+            <div class="title">VR 恐怖谷效应实验系统</div>
+            <div class="meta">角色：VR 技术负责人｜2024.09–2024.12</div>
+          </div>
+        </div>
+        <div class="chips">
+          <span class="chip">Unity</span><span class="chip">Meta SDK</span><span class="chip">Face Tracking</span>
+        </div>
+        <ul>
+          <li>构建面部追踪驱动与表情映射系统，引入滤波与同步机制。</li>
+          <li>用户负面反馈降低 35%，用于 VR 用户实验与研究展示。</li>
+        </ul>
+        <div class="links">
+        <a class="btn" href="https://github.com/THANKSHANK/UncannyValleyVR" target="_blank" rel="noopener">代码/仓库</a>
+        <a class="btn" href="https://github.com/THANKSHANK/UncannyValleyVR#readme" target="_blank" rel="noopener">项目说明(README)</a>
+        <a class="btn" href="https://github.com/THANKSHANK/UncannyValleyVR/issues" target="_blank" rel="noopener">Issues/计划</a>
+        </div>
+
+      </div>
+
+      <!-- Project 4 -->
+      <div class="card project" data-tags="ai,graphics">
+        <div class="cardhead">
+          <div>
+            <div class="title">实时 3D 风格迁移（3DGS）</div>
+            <div class="meta">角色：项目负责人｜2025.09–2025.12</div>
+          </div>
+        </div>
+        <div class="chips">
+          <span class="chip">PyTorch</span><span class="chip">3D Gaussian Splatting</span><span class="chip">LPIPS</span>
+        </div>
+        <ul>
+          <li>构建稳定优先的实时 3D 风格迁移管线，解决时间闪烁问题。</li>
+          <li>设计感知 + 几何一致性损失，多场景误差下降约 4%。</li>
+        </ul>
+        <div class="links">
+        <a class="btn" href="https://github.com/THANKSHANK/3DStyle_Transfer_3DGS" target="_blank" rel="noopener">代码/仓库</a>
+        <a class="btn" href="https://github.com/THANKSHANK/3DStyle_Transfer_3DGS#readme" target="_blank" rel="noopener">报告/README</a>
+        <a class="btn" href="https://github.com/THANKSHANK/3DStyle_Transfer_3DGS/issues" target="_blank" rel="noopener">Issues/计划</a>
+        </div>
+
+      </div>
+    </div>
+    <div class="small" style="margin-top:10px;">
+      提示：将“视频演示/代码/技术笔记”链接替换为你的实际地址；视频建议使用 B站/腾讯视频（国内访问更稳）。
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2>经历</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="title">RIT · MAGIC Spell Studios｜VR Developer（Unreal VR）</div>
+        <div class="meta">2025.08–至今</div>
+        <ul>
+          <li>基于 Unreal Engine（C++/蓝图）开发研究型 VR 系统与沉浸式应用。</li>
+          <li>负责交互/角色/场景模块与性能调优，支持多轮测试与演示交付。</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="title">网易（广州）｜VR 开发实习生</div>
+        <div class="meta">2023.03–2023.08</div>
+        <ul>
+          <li>Unity + Meta Quest：交互系统与渲染优化，掉帧率降低约 15%。</li>
+          <li>内部测试用户参与度提升 30%，多团队协作缩短开发周期 20%。</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="title">阿里巴巴（杭州）｜Unity 游戏开发实习生</div>
+        <div class="meta">2022.06–2022.08</div>
+        <ul>
+          <li>背包系统与资源管理：内存占用降低 25%，查询效率提升 30%。</li>
+          <li>参与核心系统与玩法开发，敏捷迭代提升体验。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>技能</h2>
+    <div class="card">
+      <div class="chips">
+        <span class="chip">C++</span><span class="chip">Unreal Engine 5</span><span class="chip">HLSL</span>
+        <span class="chip">OpenGL</span><span class="chip">Vulkan</span><span class="chip">Unity</span>
+        <span class="chip">OpenXR</span><span class="chip">Meta SDK</span><span class="chip">PyTorch</span>
+        <span class="chip">OpenCV</span><span class="chip">Git</span><span class="chip">Docker</span>
+      </div>
+      <div class="small" style="margin-top:10px;">
+        建议把“岗位关键词”放前面：UE5 / OpenGL / 渲染 / 引擎 / XR。
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>联系</h2>
+    <div class="two">
+      <div class="card">
+        <div class="title">快速联系</div>
+        <div class="meta">国内面试官常用微信/邮箱</div>
+        <ul>
+          <li>邮箱：<a href="mailto:zihanwang7@outlook.com">zihanwang7@outlook.com</a></li>
+          <li>GitHub：<a href="https://github.com/THANKSHANK" target="_blank" rel="noopener">github.com/THANKSHANK</a></li>
+          <li>简历：<a href="assets/resume.pdf" target="_blank" rel="noopener">下载 PDF</a></li>
+        </ul>
+        <div class="small">建议：在 Boss/微信聊天里直接发“作品集链接 + 简历PDF链接 + 代表项目视频链接”。</div>
+      </div>
+      <div class="card">
+        <div class="title">微信二维码</div>
+        <div class="meta">把你的二维码图片替换到 assets/wechat.jpg</div>
+        <div style="margin-top:10px; display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+          <img src="assets/wechat.jpg" alt="wechat qr" class="qr" style="object-fit:cover;" />
+          <div class="small">（可选）旁边加一句：<br/>“加微信备注：应聘-图形/引擎/XR-王子涵”</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer">
+    © <span id="y"></span> 王子涵 · Portfolio ｜建议使用国内可访问的链接（B站/飞书文档/腾讯文档等）
+  </div>
+</div>
+
+<script>
+  // footer year
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  // filtering
+  const buttons = Array.from(document.querySelectorAll('.fbtn'));
+  const projects = Array.from(document.querySelectorAll('.project'));
+
+  function setFilter(tag){
+    buttons.forEach(b => b.classList.toggle('active', b.dataset.filter === tag));
+    projects.forEach(p => {
+      const tags = p.dataset.tags.split(',').map(s=>s.trim());
+      const show = (tag === 'all') || tags.includes(tag);
+      p.style.display = show ? 'block' : 'none';
+    });
+  }
+  buttons.forEach(b => b.addEventListener('click', () => setFilter(b.dataset.filter)));
+</script>
+</body>
+</html>
